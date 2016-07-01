@@ -40,21 +40,7 @@ Bundle "honza/vim-snippets"
 "less
 Bundle 'vim-less'
 
-" ctrlp
-Bundle 'ctrlpvim/ctrlp.vim'
-
-" flake8
-Bundle 'nvie/vim-flake8'
-
-Bundle 'mattn/emmet-vim'
-
-Plugin 'elzr/vim-json'
-Plugin 'nginx.vim'
-
-call vundle#end()
-filetype plugin indent on
-" end bundle
-
+:set nonu                                                                                                                                                       1,1           Top
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
        \| exe "normal g'\"" | endif
