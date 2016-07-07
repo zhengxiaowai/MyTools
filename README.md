@@ -1,4 +1,5 @@
 #  我的工具
 
-- vim配置
-- 获取dearip的服务器地址和负载程度
+
+- scripts
+- images

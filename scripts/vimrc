@@ -12,9 +12,7 @@ set encoding=utf-8
 set backupcopy=yes
 
 let g:jsx_ext_required = 0
-"let mapleader="ctrl"
 
-" bundle
 "set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -22,25 +20,25 @@ call vundle#begin()
 
 " plugin
 Plugin 'VundleVim/Vundle.vim'
-
-" vim-react-snippets:
 Bundle "justinj/vim-react-snippets"
-
-" SnipMate and its dependencies:
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
-
-" Other sets of snippets (optional):
 Bundle "honza/vim-snippets"
-
-" jsx
 "Bundle 'mxw/vim-jsx'
-
-"less
 Bundle 'vim-less'
+Plugin 'elzr/vim-json'
+Plugin 'nginx.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'nvie/vim-flake8'
+Bundle 'mattn/emmet-vim'
+Bundle 'tpope/vim-markdown'
+Plugin 'fatih/vim-go'
 
-:set nonu                                                                                                                                                       1,1           Top
+call vundle#end()
+filetype plugin indent on
+" end bundle
+
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
        \| exe "normal g'\"" | endif
@@ -59,6 +57,7 @@ nmap <F3> :w<CR>
 " ctrlp
 "let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/venv/*
 map <leader>f :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
@@ -76,6 +75,14 @@ let g:snips_author='何翔宇'
 let g:snips_email='hexiangyu@limijiaoyin.com'
 let g:snips_git='https://git.limijiaoyin.com/limijiaoyin/limijiaoyin'
 
+" go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 let g:vim_json_syntax_conceal = 0
 
 
@@ -83,3 +90,9 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
+autocmd BufNewFile,BufRead *.js setlocal ts=2
+autocmd BufNewFile,BufRead *.js setlocal softtabstop=2
+autocmd BufNewFile,BufRead *.js setlocal shiftwidth=2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufRead,BufNewFile /etc/nginx/sites-*/* setfiletype conf
